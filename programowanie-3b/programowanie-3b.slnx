@@ -1,3 +1,5 @@
 <Solution>
+  <Folder Name="/C#/" />
+  <Folder Name="/C++/" />
   <Project Path="ConsoleApp/ConsoleApp.csproj" />
 </Solution>
