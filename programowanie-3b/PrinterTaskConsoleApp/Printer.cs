@@ -4,27 +4,46 @@ using System.Text;
 
 namespace PrinterTaskConsoleApp
 {
-    internal class Printer {
-    
-         public string Name { get; set; }
-        int LArkuszy = 0;
+    internal class Printer
+    {
 
-        public void PaperCount(string n, int la)
+        public string Name { get; set; }
+        private int paperCount;
+
+        public int PaperCount
         {
-            get 
-                { 
-                    
+            get
+            {
+                return paperCount;
+            }
+
+            set
+            {
+                if (value >= 0)
+                {
+                    paperCount = value;
                 }
 
-            set 
-                { 
-                    Name = n;
-                if (la >= 0)
-                {
-                    LArkuszy = la;
-                }
-                }
+            }
         }
-        
+
+        public Printer(string name, int paperCount)
+        {
+            Name = name;
+            PaperCount = paperCount;
+        }
+
+        public bool Print(int pageCount)
+        {
+            if (pageCount > 0 && pageCount <= PaperCount)
+            {
+                PaperCount -= pageCount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

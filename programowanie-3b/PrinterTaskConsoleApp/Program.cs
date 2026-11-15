@@ -10,3 +10,36 @@ Napisz program obsługujący wydruk na wybranej drukarce.
 - Wyświetl liczbę arkuszy przez obie zmienne wskazujące drukarkę oraz wcześniej zapisaną liczbę typu int. Wyjaśnij otrzymane wyniki.
 */
 
+using PrinterTaskConsoleApp;
+
+
+    Printer printer = new Printer("Brother", 10);
+
+    Printer selectedprinter = printer;
+    int copiedPaperCount = printer.PaperCount;
+
+    Console.WriteLine("POdaj liczbę stron do wydrukowania: ");
+
+
+    if (int.TryParse(Console.ReadLine(), out int pageCount))
+    {
+        bool printResult = selectedprinter.Print(pageCount);
+
+        if (printResult)
+        {
+            Console.WriteLine("Wydruk się udał");
+        }
+        else
+        {
+            Console.WriteLine("Nie można wydrukować.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Nieprawidłowa liczba");
+    }
+
+    Console.WriteLine("Drukarka: " + printer.Name);
+    Console.WriteLine("Liczba arkuszy przez printer: " + printer.PaperCount);
+    Console.WriteLine("Liczba arkuszy przez selectedPrinter: " + selectedprinter.PaperCount);
+    Console.WriteLine("Kopia liczby arkuszy: " + copiedPaperCount);
